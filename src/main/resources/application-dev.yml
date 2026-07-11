@@ -1,0 +1,11 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb+srv://chakshupsisodiya_db_user:O0p9r8KhldSO5LnS@cluster0.3egn4gs.mongodb.net
+      database: journaldb
+      auto-index-creation: true
+
+server:
+  port: 8080
+
+
