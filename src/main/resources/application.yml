@@ -1,6 +1,18 @@
 spring:
  profiles:
    active: dev
+ mail:
+   host: smtp.gmail.com
+   port: 587
+   username: chakshusparkle@gmail.com
+   password: sjfu lqet pgdd dnor
+   properties:
+     mail:
+       smtp:
+         auth: true
+         starttls:
+           enable: true
 
+weather_api_key: 43e0e1a473c2ff507a971f309ffe826e
 
 

@@ -5,6 +5,7 @@ import com.example.JournalApp.entity.User;
 import com.example.JournalApp.repository.UserRepository;
 import com.example.JournalApp.service.JournalEntryService;
 import com.example.JournalApp.service.UserService;
+import com.example.JournalApp.service.WeatherService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,9 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+    @Autowired
+    private WeatherService weatherService;
 
      @PutMapping
     public ResponseEntity<?> updateUser( @RequestBody User user){
@@ -44,5 +47,11 @@ public class UserController {
 
          userRepository.deleteByUserName(authentication.getName());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping
+    public ResponseEntity<?> greetings (){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return new ResponseEntity<>("Hi"+authentication.getName() +"weather feels like "+weatherService.getWeather("Pune").getCurrent().getWeatherDescriptions(),HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.JournalApp.controllers;
 
+import com.example.JournalApp.cache.AppCache;
 import com.example.JournalApp.entity.User;
 import com.example.JournalApp.service.UserService;
 import org.bson.types.ObjectId;
@@ -16,6 +17,8 @@ import java.util.Optional;
 public class AdminController {
     @Autowired
     UserService userService;
+    @Autowired
+    AppCache appCache;
 
     @PostMapping("/create-admin")
     public ResponseEntity<?> createAdminUser(@RequestBody User user){
@@ -43,5 +46,10 @@ public class AdminController {
         }
         else
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("/clear_app_cache")
+    public void clearAppCache(){
+        appCache.init();
     }
 }
