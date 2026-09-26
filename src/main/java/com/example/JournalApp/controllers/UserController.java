@@ -1,5 +1,6 @@
 package com.example.JournalApp.controllers;
 
+import com.example.JournalApp.api.response.WeatherResponse;
 import com.example.JournalApp.entity.JournalEntry;
 import com.example.JournalApp.entity.User;
 import com.example.JournalApp.repository.UserRepository;
@@ -52,6 +53,11 @@ public class UserController {
     @GetMapping
     public ResponseEntity<?> greetings (){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return new ResponseEntity<>("Hi"+authentication.getName() +"weather feels like "+weatherService.getWeather("Pune").getCurrent().getWeatherDescriptions(),HttpStatus.OK);
+        WeatherResponse weatherResponse=weatherService.getWeather("Pune");
+        String greeting ="";
+        if(weatherResponse !=null){
+            greeting ="Weather is "+weatherResponse.getCurrent().getFeelslike();
+        }
+        return new ResponseEntity<>("Hi"+authentication.getName() +greeting,HttpStatus.OK);
     }
 }

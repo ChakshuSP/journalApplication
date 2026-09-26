@@ -1,4 +1,6 @@
 spring:
+ redis:
+   uri: redis-cli -u redis://default:855AVBkDPx0aUlSsDnKpsntVXPJn5DgP@lasting-adventurous-view-55758.db.redis.io:10059
  profiles:
    active: dev
  mail:

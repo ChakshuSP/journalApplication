@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class WeatherResponse {
 
 
-    private Current current;
+    private  Current current;
     @Data
     public class Current {
         @JsonProperty("observation_time")

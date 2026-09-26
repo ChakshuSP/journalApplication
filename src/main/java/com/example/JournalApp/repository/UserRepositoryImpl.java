@@ -17,7 +17,7 @@ public class UserRepositoryImpl {
 
     public List<User> getUserForS(){
         Query query=new Query();
-        query.addCriteria(Criteria.where("userName").is("Admin"));
+        query.addCriteria(Criteria.where("roles").in("ADMIN"));
         query.addCriteria(Criteria.where("email").exists(true));
         List<User> users = mongoTemplate.find(query, User.class);
         if(users!=null)

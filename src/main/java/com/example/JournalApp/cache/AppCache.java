@@ -26,6 +26,11 @@ public class AppCache {
         for (ConfigJournalAppEntity configJournalAppEntity:all){
             APP_CACHE.put(configJournalAppEntity.getKey(),configJournalAppEntity.getValue());
         }
-
+    }
+    public String get(keys key) {
+        if (APP_CACHE == null) {
+            return null;
+        }
+        return APP_CACHE.get(key.name());
     }
 }
